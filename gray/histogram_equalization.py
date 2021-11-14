@@ -16,17 +16,16 @@ def PDF(image,channel=1):
     # h2 = np.zeros(256)
     # for i in range(256):
     #     h2[i] = pdf[:i].sum()
-    # return (h2*255).astype(np.uint8)
+    # return (np.round(h2*255)).astype(np.uint8)
 
     histogram = np.zeros(256).astype(np.float)
     h2 = np.zeros(256).astype(np.float)
     for i in range(256):
         histogram[i] = (image[image==i].size)
     histogram = histogram / (h*w*channel)
-    print(histogram.sum())
     for i in range(1,256):
         h2[i] = histogram[:i].sum()
-    return (h2*255).astype(np.uint8)
+    return np.round(h2*255).astype(np.uint8)
 def histogram_equalization(image):
     pdf = PDF(image,3)
     for i in range(256):
