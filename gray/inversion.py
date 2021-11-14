@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 import sys
 sys.path.append("..")
-from utils import normalize_image
+from utils import *
 
 def image_inversion(img,L):
     """
@@ -12,6 +12,6 @@ def image_inversion(img,L):
     m = normalize_image(m)
     return Image.fromarray(m)
 
-img = np.array(Image.open('../temp.jpg'))
+img = get_examples_image()
 img = image_inversion(img,200)
 img.show()
