@@ -1,10 +1,11 @@
 # 数字图像处理笔记及其算法实现
 
 sample.jpg &nbsp;示例图片 <br>
-
+![示例图片](https://github.com/chinoll/digital_image_processing/raw/master/sample.jpg)
 sample_gray.jpg &nbsp;灰度图 <br>
-
+![灰度图](https://github.com/chinoll/digital_image_processing/raw/master/sample_gray.jpg)
 sample2.jpg &nbsp;示例图片2 <br>
+![示例图片2](https://github.com/chinoll/digital_image_processing/raw/master/sample2.jpg)
 
 ## gray/ &nbsp;&nbsp;灰度变换算法
 
