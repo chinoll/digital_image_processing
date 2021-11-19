@@ -10,6 +10,7 @@ sample2.jpg &nbsp;示例图片2 <br>
 ## gray/ &nbsp;&nbsp;灰度变换算法
 
 inversion.py &nbsp;&nbsp; 反色算法 <br>
+pow.py &nbsp;&nbsp; 幂律变换算法 <br>
 histogram_equalization.py &nbsp;&nbsp; 直方图均衡化算法 <br>
 histogram_specification.py &nbsp;&nbsp; 直方图匹配算法 <br>
 
