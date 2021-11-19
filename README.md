@@ -1,8 +1,10 @@
 # 数字图像处理笔记及其算法实现
 
-sample.jpg &nbsp;示例图片
+sample.jpg &nbsp;示例图片 <br>
 
-sample_gray.jpg &nbsp;灰度图
+sample_gray.jpg &nbsp;灰度图 <br>
+
+sample2.jpg &nbsp;示例图片2 <br>
 
 ## gray/ &nbsp;&nbsp;灰度变换算法
 
