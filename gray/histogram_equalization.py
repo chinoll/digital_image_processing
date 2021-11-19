@@ -33,16 +33,10 @@ def histogram_equalization(image):
 
 if __name__ == '__main__':
     img = get_examples_image(3)
-
-    plt.figure()
-    plt.subplot(1,3,1)
-    plt.imshow(img.astype(np.uint8))
-
+    s = visualization(2,2)
+    s.append_img(img)
+    s.append_hist(img)
     img = histogram_equalization(img)
-    img = Image.fromarray(img)
-
-    plt.subplot(1,3,2)
-    plt.imshow(img)
-    plt.subplot(1,3,3)
-    plt.hist(np.array(img).reshape(-1),bins=256,range=(0,256))
-    plt.show()
+    s.append_img(img)
+    s.append_hist(img)
+    s.show()

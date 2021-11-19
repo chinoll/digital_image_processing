@@ -12,7 +12,7 @@ def open_image(name):
         img = Image.open("../" + name)
     return img
 def get_examples_image(channel=1):
-    img = open_image("sample.png")
+    img = open_image("sample.jpg")
     print(img)
     if channel == 1:
         img = img.convert('L')
@@ -38,9 +38,9 @@ class visualization:
         self.y = y
         self.showlist = []
     def append_img(self,img):
-        self.showlist.append((img.astype(np.uint8),"img"))
+        self.showlist.append((img.copy().astype(np.uint8),"img"))
     def append_hist(self,hist):
-        self.showlist.append((hist,"hist"))
+        self.showlist.append((hist.copy(),"hist"))
     def show(self):
         for i in range(self.x):
             for j in range(self.y):
@@ -50,7 +50,7 @@ class visualization:
                     if type == "img":
                         plt.imshow(img)
                     elif type == "hist":
-                        plt.hist(img)
+                        plt.hist(img.reshape(-1),bins=256,range=(0,256))
                 else:
                     plt.axis("off")
         plt.show()
