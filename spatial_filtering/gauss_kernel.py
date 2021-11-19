@@ -1,20 +1,27 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy import signal, misc
 import cv2 as cv
 import sys
 sys.path.append("..")
 sys.path.append(".")
 from utils import *
 from conv import *
+from kernel import *
 if __name__ == "__main__":
     #高斯核
-    kernel = np.array([[0.3679,0.6065,0.3679],[0.6065,1.0,0.6065],[0.3679,0.6065,0.3679]])/4.8976
-    face = get_examples_image2(3)
-    grad = convolve3d(face,kernel,boundary='symm',mode='same')
-    plt.figure()
-    plt.subplot(1,2,1)
-    plt.imshow(face.astype(np.uint8))
-    plt.subplot(1,2,2)
-    plt.imshow(grad)
-    plt.show()
+    s = visualization(1,5)
+    kernel = gauss_kernel(3)
+    origin = get_examples_image2(3)
+    blur1 = convolve3d(origin,kernel,boundary='symm',mode='same')
+    kernel = gauss_kernel(7)
+    blur2 = convolve3d(origin,kernel,boundary='symm',mode='same')
+    kernel = gauss_kernel(21)
+    blur3 = convolve3d(origin,kernel,boundary='symm',mode='same')
+    kernel = gauss_kernel(43)
+    blur4 = convolve3d(origin,kernel,boundary='symm',mode='same')
+    s.append_img(origin)
+    s.append_img(blur1)
+    s.append_img(blur2)
+    s.append_img(blur3)
+    s.append_img(blur4)
+    s.show()

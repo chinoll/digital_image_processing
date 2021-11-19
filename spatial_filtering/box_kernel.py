@@ -7,14 +7,22 @@ sys.path.append("..")
 sys.path.append(".")
 from utils import *
 from conv import *
+from kernel import *
 if __name__ == "__main__":
     #盒式核
-    kernel = np.ones((3,3))/9
-    face = get_examples_image2(3)
-    grad = convolve3d(face,kernel,boundary='symm',mode='same')
-    plt.figure()
-    plt.subplot(1,2,1)
-    plt.imshow(face.astype(np.uint8))
-    plt.subplot(1,2,2)
-    plt.imshow(grad)
-    plt.show()
+    s = visualization(1,5)
+    kernel = box_kernel(3)
+    original = get_examples_image2(3)
+    blur1 = convolve3d(original,kernel,boundary='symm',mode='same')
+    kernel = box_kernel(7)
+    blur2 = convolve3d(original,kernel,boundary='symm',mode='same')
+    kernel = box_kernel(11)
+    blur3 = convolve3d(original,kernel,boundary='symm',mode='same')
+    kernel = box_kernel(21)
+    blur4 = convolve3d(original,kernel,boundary='symm',mode='same')
+    s.append_img(original)
+    s.append_img(blur1)
+    s.append_img(blur2)
+    s.append_img(blur3)
+    s.append_img(blur4)
+    s.show()
