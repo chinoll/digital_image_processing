@@ -38,6 +38,8 @@ class visualization:
         self.y = y
         self.showlist = []
     def append_img(self,img):
+        img[img < 0] = 0
+        img[img > 255] = 255
         self.showlist.append((img.copy().astype(np.uint8),"img"))
     def append_hist(self,hist):
         self.showlist.append((hist.copy(),"hist"))
@@ -48,7 +50,7 @@ class visualization:
                 if len(self.showlist) > 0:
                     img,type = self.showlist.pop(0)
                     if type == "img":
-                        plt.imshow(img)
+                        plt.imshow(img,cmap="gray")
                     elif type == "hist":
                         plt.hist(img.reshape(-1),bins=256,range=(0,256))
                 else:

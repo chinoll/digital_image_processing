@@ -15,3 +15,7 @@ def gauss_kernel(size,K=1,sigma=-1):
     x,y = np.mgrid[-size//2+1:size//2+1,-size//2+1:size//2+1]
     g = K*np.e**(-((x**2+y**2)/(2*sigma**2)))
     return g/g.sum()
+
+def laplace_kernel():
+    kernel = np.array([[0,1,0],[1,-4,1],[0,1,0]])
+    return kernel
