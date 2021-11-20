@@ -17,3 +17,4 @@ histogram_specification.py &nbsp;&nbsp; 直方图匹配算法 <br>
 ## spatial_filtering/ &nbsp;&nbsp;空间滤波算法
 box_kernel.py &nbsp;&nbsp; 盒状卷积核 <br>
 gauss_kernel.py &nbsp;&nbsp; 高斯卷积核 <br>
+laplace_kernel.py &nbsp;&nbsp; 拉普拉斯卷积核 <br>
