@@ -19,3 +19,5 @@ box_kernel.py &nbsp;&nbsp; 盒状卷积核 <br>
 gauss_kernel.py &nbsp;&nbsp; 高斯卷积核 <br>
 laplace_kernel.py &nbsp;&nbsp; 拉普拉斯卷积核 <br>
 Unsharpening_Mask.py &nbsp;&nbsp; 钝化掩蔽和高提升滤波算法 <br>
+roberts_kernel.py &nbsp;&nbsp; 罗伯特卷积核 <br>
+sobel_kernel.py &nbsp;&nbsp; sobel卷积核 <br>
