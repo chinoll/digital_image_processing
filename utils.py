@@ -13,7 +13,6 @@ def open_image(name):
     return img
 def get_examples_image(channel=1):
     img = open_image("sample.jpg")
-    print(img)
     if channel == 1:
         img = img.convert('L')
     else:

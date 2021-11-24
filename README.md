@@ -21,3 +21,6 @@ laplace_kernel.py &nbsp;&nbsp; 拉普拉斯卷积核 <br>
 Unsharpening_Mask.py &nbsp;&nbsp; 钝化掩蔽和高提升滤波算法 <br>
 roberts_kernel.py &nbsp;&nbsp; 罗伯特卷积核 <br>
 sobel_kernel.py &nbsp;&nbsp; sobel卷积核 <br>
+
+## frequency_filtering/ &nbsp;&nbsp;频域滤波算法
+LIPF.py &nbsp;&nbsp; 理想低通滤波器 <br>
