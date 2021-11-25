@@ -8,6 +8,25 @@ def LIPF(h, w, radius,channel=1):
         return mask
     else:
         return np.stack([mask,mask,mask],axis=2)
+
+def BLPF(h,w,radius,n=4,channel=1):
+    X,Y = np.mgrid[-h//2+1:h//2+1,-w//2+1:w//2+1]
+    D = np.sqrt(X**2+Y**2)
+    mask = 1/(1+pow(D/radius,2*n))
+    if channel == 1:
+        return mask
+    else:
+        return np.stack([mask,mask,mask],axis=2)
+
+def GLPF(h,w,sigma,channel=1):
+    X,Y = np.mgrid[-h//2+1:h//2+1,-w//2+1:w//2+1]
+    D = (np.sqrt(X**2+Y**2)**2)/(2*sigma**2)
+    mask = np.exp(-D)
+    if channel == 1:
+        return mask
+    else:
+        return np.stack([mask,mask,mask],axis=2)
+
 def ifft(img):
     fshift = np.fft.ifftshift(img)
     img_back = np.fft.ifftn(fshift)
