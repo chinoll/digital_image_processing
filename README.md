@@ -24,3 +24,5 @@ sobel_kernel.py &nbsp;&nbsp; sobel卷积核 <br>
 
 ## frequency_filtering/ &nbsp;&nbsp;频域滤波算法
 LIPF.py &nbsp;&nbsp; 理想低通滤波器 <br>
+GLPF.py &nbsp;&nbsp; 高斯低通滤波器 <br>
+BLPF.py &nbsp;&nbsp; 巴特沃斯低通滤波器 <br>
