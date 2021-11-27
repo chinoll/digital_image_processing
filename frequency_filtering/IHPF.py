@@ -3,7 +3,7 @@ import sys
 sys.path.append("..")
 sys.path.append(".")
 from utils import *
-from filter import LIPF,fft,ifft,fft_log
+from filter import IHPF,fft,ifft,fft_log
 
 if __name__ == "__main__":
     s = visualization(4,4)
@@ -13,17 +13,17 @@ if __name__ == "__main__":
     rows,cols = img.shape[:2]
     s.append_img(fft_log(dft_shift))
 
-    mask = LIPF(rows,cols,16)
+    mask = IHPF(rows,cols,16)
     f = dft_shift*mask
     s.append_img(ifft(f))
     s.append_img(fft_log(f))
 
-    mask = LIPF(rows,cols,32)
+    mask = IHPF(rows,cols,32)
     f = dft_shift*mask
     s.append_img(ifft(f))
     s.append_img(fft_log(f))
 
-    mask = LIPF(rows,cols,256)
+    mask = IHPF(rows,cols,256)
     f = dft_shift*mask
     s.append_img(ifft(f))
     s.append_img(fft_log(f))
@@ -35,17 +35,17 @@ if __name__ == "__main__":
     rows,cols = img.shape[:2]
     s.append_img(fft_log(dft_shift))
 
-    mask = LIPF(rows,cols,16,3)
+    mask = IHPF(rows,cols,16,3)
     f = dft_shift*mask
     s.append_img(ifft(f))
     s.append_img(fft_log(f))
 
-    mask = LIPF(rows,cols,32,3)
+    mask = IHPF(rows,cols,32,3)
     f = dft_shift*mask
     s.append_img(ifft(f))
     s.append_img(fft_log(f))
 
-    mask = LIPF(rows,cols,256,3)
+    mask = IHPF(rows,cols,256,3)
     f = dft_shift*mask
     s.append_img(ifft(f))
     s.append_img(fft_log(f))
