@@ -23,6 +23,9 @@ roberts_kernel.py &nbsp;&nbsp; 罗伯特卷积核 <br>
 sobel_kernel.py &nbsp;&nbsp; sobel卷积核 <br>
 
 ## frequency_filtering/ &nbsp;&nbsp;频域滤波算法
-LIPF.py &nbsp;&nbsp; 理想低通滤波器 <br>
+ILPF.py &nbsp;&nbsp; 理想低通滤波器 <br>
 GLPF.py &nbsp;&nbsp; 高斯低通滤波器 <br>
 BLPF.py &nbsp;&nbsp; 巴特沃斯低通滤波器 <br>
+IHPF.py &nbsp;&nbsp; 理想高通滤波器 <br>
+GHPF.py &nbsp;&nbsp; 高斯高通滤波器 <br>
+BHPF.py &nbsp;&nbsp; 巴特沃斯高通滤波器 <br>
