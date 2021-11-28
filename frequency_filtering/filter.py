@@ -55,6 +55,14 @@ def laplace(h,w,channel=1):
         mask = 1+4*(np.pi**2)*D
         return np.stack([mask,mask,mask],axis=2)
 
+def homomorphic(h,w,D0=20,gamaH=3.0,gamaL=0.4,c=5,channel=1):
+    X,Y = np.mgrid[-h//2+1:h//2+1,-w//2+1:w//2+1]
+    mask = (gamaH-gamaL)*(1-np.e**(-c*(X**2+Y**2)/D0)) + gamaL
+    if channel == 1:
+        return mask
+    else:
+        return np.stack([mask,mask,mask],axis=2)
+
 def ifft(img):
     fshift = np.fft.ifftshift(img)
     img_back = np.fft.ifftn(fshift)

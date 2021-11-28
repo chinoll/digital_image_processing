@@ -20,7 +20,7 @@ if __name__ == "__main__":
     mask[:rows,:cols] = laplace(rows,cols)
     f = dft_shift*mask
     z = transform_img(ifft(f)[:rows,:cols])
-    s.append_img(z+img)
+    s.append_img(z)
 
     #彩色图像
     img = get_examples_image(3)
@@ -36,6 +36,6 @@ if __name__ == "__main__":
     mask[:rows,:cols] = laplace(rows,cols,3)
     f = dft_shift*mask
     z = transform_img(ifft(f)[:rows,:cols])
-    s.append_img(z+img)
+    s.append_img(z)
 
     s.show()
