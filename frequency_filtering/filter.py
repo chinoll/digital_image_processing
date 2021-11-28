@@ -41,6 +41,20 @@ def BHPF(h,w,radius,n=4,channel=1):
 def GHPF(h,w,sigma,channel=1):
     return 1 - GLPF(h,w,sigma,channel)
 
+def laplace(h,w,channel=1):
+    X = np.zeros((h,w))
+    Y = np.zeros((h,w))
+    for i in range(h):
+        X[i] = h-i
+    for i in range(w):
+        Y[:,i] = h-i
+    D = X**2+Y**2
+    if channel == 1:
+        return 1+4*(np.pi**2)*D
+    else:
+        mask = 1+4*(np.pi**2)*D
+        return np.stack([mask,mask,mask],axis=2)
+
 def ifft(img):
     fshift = np.fft.ifftshift(img)
     img_back = np.fft.ifftn(fshift)

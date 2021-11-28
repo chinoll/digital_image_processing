@@ -29,6 +29,10 @@ def get_examples_image2(channel=1):
         img = img.convert("RGB")
 
     return np.array(img).astype(np.float32)
+def transform_img(img):
+    k = 255/(np.max(img)-np.min(img))
+    img = k*(img-np.min(img))
+    return img
 
 class visualization:
     def __init__(self,x,y):
@@ -36,10 +40,14 @@ class visualization:
         self.x = x
         self.y = y
         self.showlist = []
-    def append_img(self,img):
-        img[img < 0] = 0
-        img[img > 255] = 255
-        self.showlist.append((img.copy().astype(np.uint8),"img"))
+    def append_img(self,img,transform=False):
+        img = img.copy()
+        if not transform:
+            img[img < 0] = 0
+            img[img > 255] = 255
+        else:
+            img = transform_img(img)
+        self.showlist.append((img.astype(np.uint8),"img"))
     def append_hist(self,hist):
         self.showlist.append((hist.copy(),"hist"))
     def show(self):
