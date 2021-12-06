@@ -34,3 +34,6 @@ homomorphic.py &nbsp;&nbsp; 同态滤波器 <br>
 IBRF.py &nbsp;&nbsp; 理想带阻滤波器 <br>
 GBRF.py &nbsp;&nbsp; 高斯带阻滤波器 <br>
 BBRF.py &nbsp;&nbsp; 巴特斯沃带阻滤波器 <br>
+
+## image_restoration_and_reconstruction/ &nbsp;&nbsp; 图像复原和重建
+geometric_mean.py &nbsp;&nbsp; 几何均值滤波器 <br>

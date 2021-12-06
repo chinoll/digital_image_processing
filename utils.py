@@ -29,10 +29,14 @@ def get_examples_image2(channel=1):
         img = img.convert("RGB")
 
     return np.array(img).astype(np.float32)
+
+def normalization(data):
+    _range = np.max(data) - np.min(data)
+    return (data - np.min(data)) / _range
+
 def transform_img(img):
-    k = 255/(np.max(img)-np.min(img))
-    img = k*(img-np.min(img))
-    return img
+    img = normalization(img)
+    return img*255
 
 class visualization:
     def __init__(self,x,y):
