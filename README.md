@@ -39,3 +39,7 @@ BBRF.py &nbsp;&nbsp; 巴特斯沃带阻滤波器 <br>
 geometric_mean.py &nbsp;&nbsp; 几何均值滤波器 <br>
 harmonic_mean.py &nbsp;&nbsp; 谐波平均滤波器 <br>
 contra_harmonic_mean.py &nbsp;&nbsp; 反谐波平均滤波器 <br>
+median.py &nbsp;&nbsp; 中值滤波器 <br>
+minimum.py &nbsp;&nbsp; 最小值滤波器 <br>
+maximum.py &nbsp;&nbsp; 最大值滤波器 <br>
+alpha_trimmed_mean.py &nbsp;&nbsp; 修正阿尔法均值滤波器 <br>

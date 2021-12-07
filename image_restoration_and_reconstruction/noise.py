@@ -60,8 +60,8 @@ def add_saltpepper_noise(img, p=0.5):
     椒盐噪声
     '''
     img_ = img.copy()
-    p = 1 - p
-    mask = np.random.choice((0, 1, 2), size=img_.shape, p=[p, (1 - p)/2, (1 - p)/2])
+    # p = 1 - p
+    mask = np.random.choice((0, 1, 2), size=img_.shape, p=[p, p, 1 - 2 * p])
     if img_.ndim == 3:
         mask = np.stack([mask[:,:,0]] * 3, axis=2)
     img_ = np.where(mask == 0, 255, img_) # 盐噪声

@@ -1,11 +1,11 @@
 import numpy as np
-def pad_image(img,m,n):
+def pad_image(img:np.ndarray,m:int,n:int)->np.ndarray:
     if img.ndim == 3:
         return np.pad(img,((0,0),(m,m),(n,n)),'edge')
     else:
         return np.pad(img,((m,m),(n,n)),'edge')
 
-def conv2d(img,kernel):
+def conv2d(img:np.ndarray,kernel:np.ndarray) -> np.ndarray:
     """
     img: input image
     kernel: convolution kernel

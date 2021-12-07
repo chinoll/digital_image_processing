@@ -1,12 +1,12 @@
 import numpy as np
-
 class geometric_mean:
     def __init__(self,kernel_size=(3,3)):
         if kernel_size[0]%2==0 or kernel_size[1]%2==0:
             raise ValueError("Kernel size must be odd")
 
         self.shape = kernel_size
-    def __mul__(self,other):
+
+    def __mul__(self,other:np.ndarray) -> int:
         if other.shape != self.shape:
             raise ValueError("Kernel size must be the same")
         other[other == 0] = 1
@@ -23,11 +23,67 @@ class contra_harmonic_mean:
 
         self.shape = kernel_size
         self.Q = Q
-    def __mul__(self,other):
+
+    def __mul__(self,other:np.ndarray) -> int:
         if other.shape != self.shape:
             raise ValueError("Kernel size must be the same")
         other[other == 0] = 1
         output = (np.sum(other**(self.Q+1)))/np.sum((other**self.Q))
         return output
+
 def harmonic_mean(kernel_size=(3,3)):
     return contra_harmonic_mean(kernel_size,Q=-1)
+
+class median:
+    def __init__(self,kernel_size=(3,3)):
+        if kernel_size[0]%2==0 or kernel_size[1]%2==0:
+            raise ValueError("Kernel size must be odd")
+
+        self.shape = kernel_size
+
+    def __mul__(self,other:np.ndarray) -> int:
+        if other.shape != self.shape:
+            raise ValueError("Kernel size must be the same")
+        output = np.median(other)
+        return output
+
+class minimum:
+    def __init__(self,kernel_size=(3,3)):
+        if kernel_size[0]%2==0 or kernel_size[1]%2==0:
+            raise ValueError("Kernel size must be odd")
+
+        self.shape = kernel_size
+
+    def __mul__(self,other:np.ndarray) -> int:
+        if other.shape != self.shape:
+            raise ValueError("Kernel size must be the same")
+        output = np.min(other)
+        return output
+
+class maximum:
+    def __init__(self,kernel_size=(3,3)):
+        if kernel_size[0]%2==0 or kernel_size[1]%2==0:
+            raise ValueError("Kernel size must be odd")
+
+        self.shape = kernel_size
+
+    def __mul__(self,other:np.ndarray) -> int:
+        if other.shape != self.shape:
+            raise ValueError("Kernel size must be the same")
+        output = np.max(other)
+        return output
+
+class alpha_trimmed_mean:
+    def __init__(self,kernel_size=(3,3),d:int=1):
+        if kernel_size[0]%2==0 or kernel_size[1]%2==0:
+            raise ValueError("Kernel size must be odd")
+
+        self.shape = kernel_size
+        self.d = d
+
+    def __mul__(self,other:np.ndarray) -> int:
+        if other.shape != self.shape:
+            raise ValueError("Kernel size must be the same")
+        other = other.reshape(-1)
+        output = np.mean(np.sort(other)[int(self.d/2):len(other)-1-int(np.ceil(self.d/2))])
+        return output
