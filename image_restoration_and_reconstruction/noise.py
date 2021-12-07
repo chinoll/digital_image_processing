@@ -23,7 +23,7 @@ from utils import *
 #     X2 = pow(1-shape+shape*Y,1/shape)
 #     return (X1+X2)*scale
 
-def add_gaussian_noise(img, scale=10,p=0.5):
+def add_gaussian_noise(img, scale=10,p=1):
     '''
     高斯噪声
     '''
