@@ -32,3 +32,39 @@ def add_gaussian_noise(img, scale=10,p=0.5):
     mask = np.random.choice((0, 1), size=img_.shape, p=[p, 1 - p])
     img_ = np.where(mask == 0, img_ + noise, img_)
     return transform_img(img_)
+
+def add_pepper_noise(img, p=0.5):
+    '''
+    胡椒噪声
+    '''
+    img_ = img.copy()
+    mask = np.random.choice((0, 1), size=img_.shape, p=[p, 1 - p])
+    if img_.ndim == 3:
+        mask = np.stack([mask[:,:,0]] * 3, axis=2)
+    img_ = np.where(mask == 0, 0, img_)
+    return transform_img(img_)
+
+def add_salt_noise(img, p=0.5):
+    '''
+    盐噪声
+    '''
+    img_ = img.copy()
+    mask = np.random.choice((0, 1), size=img_.shape, p=[p, 1 - p])
+    if img_.ndim == 3:
+        mask = np.stack([mask[:,:,0]] * 3, axis=2)
+    img_ = np.where(mask == 0, 255, img_)
+    return transform_img(img_)
+
+def add_saltpepper_noise(img, p=0.5):
+    '''
+    椒盐噪声
+    '''
+    img_ = img.copy()
+    p = 1 - p
+    mask = np.random.choice((0, 1, 2), size=img_.shape, p=[p, (1 - p)/2, (1 - p)/2])
+    if img_.ndim == 3:
+        mask = np.stack([mask[:,:,0]] * 3, axis=2)
+    img_ = np.where(mask == 0, 255, img_) # 盐噪声
+    img_ = np.where(mask == 1, 0, img_) # 胡椒噪声
+    return transform_img(img_)
+

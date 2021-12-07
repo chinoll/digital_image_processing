@@ -1,4 +1,3 @@
-from operator import mul
 import numpy as np
 def ILPF(h, w, radius,channel=1):
     center = (int(w/2), int(h/2))
