@@ -99,3 +99,36 @@ class midpoint:
             raise ValueError("Kernel size must be the same")
         output = np.max(other) + np.min(other)
         return output/2
+
+class adaptive_local:
+    def __init__(self,kernel_size=(3,3),image=None,sigma=None) -> None:
+        if kernel_size[0]%2==0 or kernel_size[1]%2==0:
+            raise ValueError("Kernel size must be odd")
+        p=0.9
+        self.shape = kernel_size
+        if sigma == None:
+            self.sigma = self.calc_variance(image)*p
+        else:
+            self.sigma=sigma
+        print(self.sigma)
+
+        self.gx = (kernel_size[0]-1)//2
+        self.gy = (kernel_size[1]-1)//2
+
+    def calc_variance(self,image:np.ndarray) -> int:
+        hist,bins = np.histogram(image.flatten(), bins=256, range=(0, 256),density=True)
+        r = bins[:-1]
+        m = np.sum(hist*r)
+        sigma = np.sum(hist*(r-m)**2)
+        return sigma
+    def __mul__(self,other:np.ndarray) -> int:
+        if other.shape != self.shape:
+            raise ValueError("Kernel size must be the same")
+        g = other[self.gx,self.gy]
+        sigma = np.var(other)
+        if sigma == 0:
+            sigma=1e-8
+        p = self.sigma/sigma
+        if p > 1:
+            p = 1
+        return g-p*(g-np.mean(other))
