@@ -110,7 +110,6 @@ class adaptive_local:
             self.sigma = self.calc_variance(image)*p
         else:
             self.sigma=sigma
-        print(self.sigma)
 
         self.gx = (kernel_size[0]-1)//2
         self.gy = (kernel_size[1]-1)//2
