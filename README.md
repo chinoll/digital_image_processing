@@ -45,3 +45,4 @@ maximum.py &nbsp;&nbsp; 最大值滤波器 <br>
 alpha_trimmed_mean.py &nbsp;&nbsp; 修正阿尔法均值滤波器 <br>
 midpoint.py &nbsp;&nbsp; 中点滤波器 <br>
 adaptive_local.py &nbsp;&nbsp; 自适应局部降噪滤波器 <br>
+adaptive_median.py &nbsp;&nbsp; 自适应中值滤波器 <br>

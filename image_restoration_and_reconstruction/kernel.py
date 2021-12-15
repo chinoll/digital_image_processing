@@ -131,3 +131,32 @@ class adaptive_local:
         if p > 1:
             p = 1
         return g-p*(g-np.mean(other))
+
+class ada_median:
+    def __init__(self,smax=7) -> None:
+        if smax%2 == 0:
+            raise ValueError("Kernel size must be odd")
+        self.smax = smax
+        self.shape = (smax,smax)
+    def __mul__(self,other:np.ndarray) -> int:
+        if other.shape != self.shape:
+            raise ValueError("Kernel size must be the same")
+        z = other[self.smax//2,self.smax//2]
+        fmedian = np.median(other)
+        x,y = (3,3)
+        while x <= self.smax and y <= self.smax:
+            zmatrix = other[other.shape[0]//2+x//2:int(np.ceil(other.shape[0]/2))+x//2,
+                            other.shape[1]//2+y//2:int(np.ceil(other.shape[1]/2))+y//2]
+            median = np.median(zmatrix)
+            minimum = np.min(zmatrix)
+            maximum = np.max(zmatrix)
+            if minimum < median and median < maximum:
+                if minimum < z and z < maximum:
+                    return z
+                else:
+                    return median
+            else:
+                x+=2
+                y+=2
+        return fmedian
+        
