@@ -5,7 +5,7 @@ def pad_image(img:np.ndarray,m:int,n:int)->np.ndarray:
     else:
         return np.pad(img,((m,m),(n,n)),'edge')
 
-def conv2d(img:np.ndarray,kernel:np.ndarray) -> np.ndarray:
+def conv2d(img:np.ndarray,kernel) -> np.ndarray:
     """
     img: input image
     kernel: convolution kernel
@@ -22,7 +22,7 @@ def conv2d(img:np.ndarray,kernel:np.ndarray) -> np.ndarray:
 
     k,l = kernel.shape
     output = np.zeros(img.shape)
-    img = pad_image(img,k-1,l-1)
+    img = pad_image(img,k-1,l-1)        
     if img.ndim != 3:
         for i in range(m):
             for j in range(n):
