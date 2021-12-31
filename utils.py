@@ -50,8 +50,8 @@ class visualization:
             img[img < 0] = 0
             img[img > 255] = 255
         else:
-            img = transform_img(img)
-        self.showlist.append((img.astype(np.uint8),"img"))
+            img = transform_img(img).astype(np.uint8)
+        self.showlist.append((img,"img"))
     def append_hist(self,hist):
         self.showlist.append((hist.copy(),"hist"))
     def show(self):
