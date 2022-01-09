@@ -77,16 +77,25 @@ def TBLPF(h:int,w:int,radius:int,n:int,k,channel:int=1) -> np.ndarray:
             mask *= H(i,j)
     return multi_channel(mask,channel)
 
-def ifft(img):
-    fshift = np.fft.ifftshift(img)
-    img_back = np.fft.ifftn(fshift)
-    img_back = np.abs(img_back)
-    return img_back
+def ifft(img,shift=True):
+    if img.ndim == 2:
+        img_back = np.fft.ifft2(img)
+    else:
+        img_back = np.fft.ifftn(img)
 
-def fft(img):
-    dft = np.fft.fftn(img)
-    dft_shift = np.fft.fftshift(dft)
-    return dft_shift
+    if shift:
+        img_back = np.fft.ifftshift(img_back)
+
+    return  np.abs(img_back)
+
+def fft(img,shift=True):
+    if img.ndim == 2:
+        dft = np.fft.fft2(img)
+    else:
+        dft = np.fft.fftn(img)
+    if shift:
+        dft = np.fft.fftshift(dft)
+    return dft
 
 def fft_log(img,K=14):
     if img.ndim == 2:

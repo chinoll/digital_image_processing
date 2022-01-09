@@ -117,5 +117,6 @@ def add_sin_noise(img, scale=1, angle=0):
     offset_width = abs(new_width - width) // 2
     img_dst = new_img[offset_height:offset_height + height, offset_width:offset_width+width]
     output_img = normalization(img_dst)
-    
+    if img.ndim == 3:
+        output_img = np.stack([output_img] * 3, axis=2)
     return output_img
