@@ -52,3 +52,4 @@ const_ls.py &nbsp;&nbsp; 约束最小二乘滤波器 <br>
 
 ## color_image_processing/ &nbsp;&nbsp; 彩色图像处理
 color_layer.py &nbsp;&nbsp; 彩色分层 <br>
+rgb_hsi.pu &nbsp;&nbsp; RGB和HSI相互转换 <br>
