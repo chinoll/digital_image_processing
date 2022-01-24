@@ -39,12 +39,12 @@ def transform_img(img):
     return img*255
 
 class visualization:
-    def __init__(self,x,y):
+    def __init__(self,x=None,y=None):
         plt.figure()
         self.x = x
         self.y = y
         self.showlist = []
-    def append_img(self,img,transform=False):
+    def append_img(self,img,transform=True):
         img = img.copy()
         if not transform:
             img[img < 0] = 0
@@ -55,6 +55,13 @@ class visualization:
     def append_hist(self,hist):
         self.showlist.append((hist.copy(),"hist"))
     def show(self):
+        if self.x == None and self.y == None:
+            self.x,self.y = getMN(len(self.showlist)) #自动计算x,y
+        elif self.x != None and self.y == None:
+            _,self.y = getMN(len(self.showlist),self.x)
+        elif self.y != None and self.x == None:
+            _,self.x = getMN(len(self.showlist),self.y)
+
         for i in range(self.x):
             for j in range(self.y):
                 plt.subplot(self.x,self.y,i*self.y+j+1)
@@ -67,3 +74,42 @@ class visualization:
                 else:
                     plt.axis("off")
         plt.show()
+
+def is_prime(num):
+    if num == 2:
+        return True
+    if num < 2 or num % 2 == 0:
+        return False
+    if num % 6 != 1 and num % 6 != 5:
+        return False
+    for i in range(5,int(num**0.5)+1,6):
+        if num % i == 0 or num % (i+2) == 0:
+            return False
+    return True
+
+def getMN(num,n=None):
+    #将num分解为MxN
+    if num == 2:
+        return 2,1
+    if n == None:
+        n = 1
+
+    if is_prime(num):
+        while True:
+            if is_prime(num) and num % n == 0:
+                num += 1
+            else:
+                break
+    if n != 1:
+        return n,num//n
+
+    l = []
+    while num != 1:
+       for i in range(2,num+1):
+           if num % i == 0:
+                num //= i
+                l.append(i)
+                break
+    if len(l) % 2 != 0:
+        l.append(1)
+    return int(np.prod(l[:len(l)//2])),int(np.prod(l[len(l)//2:]))

@@ -53,7 +53,7 @@ def hsi_to_rgb(img):
     return RG()+GB()+BR()
 if __name__ == "__main__":
     img = get_examples_image(3)/255
-    s = visualization(1,5)
+    s = visualization()
     s.append_img(img)
     hsi = rgb_to_hsi(img)
     s.append_img(hsi[:,:,0])
