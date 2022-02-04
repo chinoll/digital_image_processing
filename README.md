@@ -53,3 +53,8 @@ const_ls.py &nbsp;&nbsp; 约束最小二乘滤波器 <br>
 ## color_image_processing/ &nbsp;&nbsp; 彩色图像处理
 color_layer.py &nbsp;&nbsp; 彩色分层 <br>
 rgb_hsi.py &nbsp;&nbsp; RGB和HSI相互转换 <br>
+
+## morphological/ &nbsp;&nbsp; 形态学处理
+dilation.py &nbsp;&nbsp; 膨胀 <br>
+erosion.py &nbsp;&nbsp; 腐蚀 <br>
+morphological.py &nbsp;&nbsp; 形态学函数 <br>
