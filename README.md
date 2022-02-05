@@ -58,3 +58,5 @@ rgb_hsi.py &nbsp;&nbsp; RGB和HSI相互转换 <br>
 dilation.py &nbsp;&nbsp; 膨胀 <br>
 erosion.py &nbsp;&nbsp; 腐蚀 <br>
 morphological.py &nbsp;&nbsp; 形态学函数 <br>
+close.py &nbsp;&nbsp; 闭运算 <br>
+open.py &nbsp;&nbsp; 开运算 <br>

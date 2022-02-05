@@ -8,7 +8,6 @@ def pad_image(img:np.ndarray,m:int,n:int)->np.ndarray:
 
 def erode(img,kernel=np.ones((3,3),np.uint8),iterations=1):
     img = img.copy()
-    print(img.shape)
     if img.ndim == 3:
         m,n,c = img.shape
     else:
@@ -46,4 +45,16 @@ def dilate(img,kernel=np.ones((3,3),np.uint8),iterations=1):
                 for j in range(m):
                     for z in range(n):
                         img[j,z,i] = np.max(img[j:j+k,z:z+l,i]+kernel)
+    return img
+
+def close(img,kernel,iterations=1):
+    for _ in range(iterations):
+        img = dilate(img,kernel)
+        img = erode(img,kernel)
+    return img
+
+def open(img,kernel,iterations=1):
+    for _ in range(iterations):
+        img = erode(img,kernel)
+        img = dilate(img,kernel)
     return img
