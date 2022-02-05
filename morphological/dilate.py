@@ -3,7 +3,7 @@ sys.path.append("..")
 sys.path.append(".")
 from utils import *
 import numpy as np
-from .morphological import *
+from .morphological import dilate
 if __name__ == '__main__':
     img = get_examples_image(3)
     s = visualization(1,3)
