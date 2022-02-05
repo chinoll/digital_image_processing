@@ -1,7 +1,7 @@
 import numpy as np
 def pad_image(img:np.ndarray,m:int,n:int)->np.ndarray:
     if img.ndim == 3:
-        return np.pad(img,((0,0),(m,m),(n,n)),'edge')
+        return np.pad(img,((m,m),(n,n),(0,0)),'edge')
     else:
         return np.pad(img,((m,m),(n,n)),'edge')
 
@@ -22,7 +22,7 @@ def conv2d(img:np.ndarray,kernel) -> np.ndarray:
 
     k,l = kernel.shape
     output = np.zeros(img.shape)
-    img = pad_image(img,k-1,l-1)        
+    img = pad_image(img,k//2,l//2)        
     if img.ndim != 3:
         for i in range(m):
             for j in range(n):
