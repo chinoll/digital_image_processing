@@ -51,6 +51,7 @@ def binary_erode(img,kernel,iterations=1):
     m,n = img.shape
     k,l = kernel.shape
     template = pad_image(img,k//2,l//2)
+    print(template.shape,template.dtype)
     for i in range(iterations):
         for i in range(m):
             for j in range(n):
@@ -101,3 +102,6 @@ def hmt(img,kernel,iterations=1):
         k[kernel>0]=0
         img2 = binary_erode(255-img,np.abs(k))
     return img1 & img2
+
+def binary_edge(img,kernel=np.ones((3,3),np.int32)):
+    return img.astype(np.int32)-erode(img,kernel.astype(np.int32))
