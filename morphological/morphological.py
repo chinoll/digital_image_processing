@@ -99,9 +99,17 @@ def hmt(img,kernel,iterations=1):
         k[k<0] = 0
         img1 = binary_erode(img,k)
         k = kernel.copy()
-        k[kernel>0]=0
-        img2 = binary_erode(255-img,np.abs(k))
+        k[kernel>0] = 0
+        img2 = binary_erode(255 - img,np.abs(k))
     return img1 & img2
 
 def binary_edge(img,kernel=np.ones((3,3),np.int32)):
     return img.astype(np.int32)-erode(img,kernel.astype(np.int32))
+
+#孔洞填充
+def hole_filling(img,kernel=np.ones((3,3)),iterations=1):
+    img_c = img.copy().astype(np.int32)
+    img = 255 - img.copy().astype(np.int32)
+    for _ in range(iterations):
+        img = dilate(img,kernel) & img_c
+    return img

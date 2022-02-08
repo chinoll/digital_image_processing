@@ -62,3 +62,4 @@ close.py &nbsp;&nbsp; 闭运算 <br>
 open.py &nbsp;&nbsp; 开运算 <br>
 hmt.py &nbsp;&nbsp; 击中-击不中变换 <br>
 binary_edge.py &nbsp;&nbsp; 二值图像边缘提取 <br>
+hole_filling.py &nbsp;&nbsp; 孔洞填充 <br>
