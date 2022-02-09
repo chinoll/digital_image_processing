@@ -16,6 +16,5 @@ if __name__ == '__main__':
     s.append_img(hole_filling(img,kernel))
 
     kernel = np.ones((3,3),np.uint32)
-    s.append_img(hole_filling(img,kernel,5))
-    s.append_img(hole_filling(img,kernel,15))
+    s.append_img(hole_filling(img,kernel,8))
     s.show()

@@ -47,26 +47,25 @@ def gray_dilate(img,kernel=np.ones((3,3),np.uint8),iterations=1):
     return img
 
 def binary_erode(img,kernel,iterations=1):
-    img = img.copy().astype(np.int32)
+    img = img.copy()
     m,n = img.shape
     k,l = kernel.shape
     template = pad_image(img,k//2,l//2)
-    print(template.shape,template.dtype)
-    for i in range(iterations):
+    for _ in range(iterations):
         for i in range(m):
             for j in range(n):
                 img[i,j] = 255 if np.sum(template[i:i+k,j:j+l]&kernel) == np.sum(kernel) else 0
     return img
 
 def binary_dilate(img,kernel,iterations=1):
-    img = img.copy().astype(np.int32)
+    img = img.copy()
     m,n = img.shape
     k,l = kernel.shape
     template = pad_image(img,k//2,l//2)
-    for i in range(iterations):
+    for _ in range(iterations):
         for i in range(m):
             for j in range(n):
-                img[i,j] = 0 if np.sum(template[i:i+k,j:j+l]&kernel) == 0 else 255
+                img[i,j] = 255 if np.sum(template[i:i+k,j:j+l]&kernel) != 0 else 0
     return img
 
 def erode(img,kernel=np.ones((3,3)),iterations=1):
@@ -94,6 +93,8 @@ def open(img,kernel,iterations=1):
     return img
 
 def hmt(img,kernel,iterations=1):
+    img = img.copy().astype(np.int32)
+    kernel = kernel.astype(np.int32)
     for _ in range(iterations):
         k = kernel.copy()
         k[k<0] = 0
@@ -108,8 +109,8 @@ def binary_edge(img,kernel=np.ones((3,3),np.int32)):
 
 #孔洞填充
 def hole_filling(img,kernel=np.ones((3,3)),iterations=1):
-    img_c = img.copy().astype(np.int32)
-    img = 255 - img.copy().astype(np.int32)
+    ic = 255 - img.copy().astype(np.uint8)
+    i = img.copy().astype(np.uint8)
     for _ in range(iterations):
-        img = dilate(img,kernel) & img_c
-    return img
+        i = dilate(i,kernel) & ic
+    return i | img.astype(np.uint8)
