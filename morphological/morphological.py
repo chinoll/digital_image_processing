@@ -114,3 +114,7 @@ def hole_filling(img,kernel=np.ones((3,3)),iterations=1):
     for _ in range(iterations):
         i = dilate(i,kernel) & ic
     return i | img.astype(np.uint8)
+
+#梯度
+def gradient(img,kernel=np.ones((3,3),np.uint8)):
+    return dilate(img,kernel) - erode(img,kernel)
